@@ -7,7 +7,7 @@ public class taskFive {
         int[] createdArray = new int[10];
 
         for (int i = 0; i < createdArray.length; i++) {
-            createdArray[i] = (int) (Math.random() * 100);
+            createdArray[i] = (int) (Math.random() * 200 - 100);
         }
 
         System.out.println(Arrays.toString(createdArray));
