@@ -5,28 +5,26 @@ public class taskSix {
 
         int[] createdArray = new int[5];
 
-        int arrayLength = createdArray.length;
-
-        for (int i = 0;i < arrayLength; i++) {
+        for (int i = 0;i < createdArray.length; i++) {
             createdArray[i] = (int) (Math.random() * 10);
         }
 
         System.out.println(Arrays.toString(createdArray));
 
-        System.out.println(comparisonOfParts(createdArray, arrayLength));
+        System.out.println(comparisonOfParts(createdArray));
     }
 
-    private static boolean comparisonOfParts(int[] createdArray, int arrayLength) {
+    private static boolean comparisonOfParts(int[] createdArray) {
 
         int leftSum = 0, arraySum = 0;
         boolean res = false;
 
-        for (int i = 0; i < arrayLength; i++) {
+        for (int i = 0; i < createdArray.length; i++) {
             arraySum += createdArray[i];
         }
         System.out.println("Array sum = " + arraySum);
 
-        for (int i = 0; i < arrayLength-1; i++) {
+        for (int i = 0; i < createdArray.length-1; i++) {
             leftSum += createdArray[i];
             System.out.print("Current left sum = " + leftSum + " ");
             System.out.println("Current right sum = " + (arraySum - leftSum) + " ");
