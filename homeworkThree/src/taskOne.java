@@ -24,17 +24,18 @@ public class taskOne {
                         System.out.println("Ваше число больше, чем загаданное");
                     } else {
                         System.out.println("Ваше число меньше, чем загаданное");
+                        System.out.println();
                     }
                     countOfLives--;
                 } else {
                     System.out.println("Вы победили!");
                     break;
                 }
-                System.out.println(i);
             }
             System.out.println("Повторить игру ещё раз? /1 - да, 0 - нет");
             resumeStatus = scanner.nextInt();
         } while (resumeStatus > 0);
+        scanner.close();
     }
 
     private static int randomNumber(int maxOfRandom) {
