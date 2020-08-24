@@ -32,7 +32,7 @@ public class taskTwo {
               length = usersWord.length();
           }
 
-          for (int i = 0; i < (length - 1); i++) {
+          for (int i = 0; i < length; i++) {
               char hiddenWordChar = hiddenWord.charAt(i);
               char userWordChar = usersWord.charAt(i);
               if (userWordChar == hiddenWordChar) {
