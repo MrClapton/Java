@@ -36,7 +36,7 @@ public class Test {
     private static String randomNumber() {
         Random generator = new Random();
         String number = "+79";
-        int SecondPart = generator.nextInt(999999999);
+        int SecondPart = 900000000 + generator.nextInt(999999999 - 900000000 + 1);
         number += SecondPart;
         return number;
     }
