@@ -24,8 +24,15 @@ public class Cat {
         return satiety;
     }
 
-    public void eat(Plate plate) {
-        plate.decreaseFood(appetite);
+    public boolean eat(Plate plate) {
+        if (plate.getFood() < this.getAppetite()) {
+            System.out.println("There is little food in the bowl - " + plate.getFood() + " | for the cat " + this.getName());
+            return false;
+        } else {
+            plate.decreaseFood(appetite);
+            this.setSatiety(true);
+            return true;
+        }
     }
 
     public String catInfo() {
