@@ -24,6 +24,7 @@ public class Cat {
         return satiety;
     }
 
+
     public boolean eat(Plate plate) {
         if (plate.getFood() < this.getAppetite()) {
             System.out.println("There is little food in the bowl - " + plate.getFood() + " | for the cat " + this.getName());
@@ -33,7 +34,6 @@ public class Cat {
             this.setSatiety(true);
             return true;
         }
-    }
 
     public String catInfo() {
        return (this.toString());

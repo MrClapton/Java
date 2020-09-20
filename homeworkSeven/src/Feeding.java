@@ -31,14 +31,7 @@ public class Feeding {
 
     public static void feedingCats(Cat[] cats, Plate plate) {
         for (Cat currentCat : cats) {
-            /*if (plate.getFood() < currentCat.getAppetite()) {
-                System.out.println("There is little food in the bowl - " + plate.getFood() + " | for the cat " + currentCat.getName());
-                continue;
-            } else {
-                currentCat.eat(plate);
-                currentCat.setSatiety(true);
-                System.out.println("Cat " + currentCat.getName() + " ate succesfully");
-            }*/
+            if (plate.getFood() < currentCat.getAppetite()) {
            boolean isCurrentEat = currentCat.eat(plate);
            if (!isCurrentEat) {
                continue;
@@ -50,17 +43,14 @@ public class Feeding {
     }
 
     public static int randomFoodInBowl(int minFood, int maxFood) {
-        //Random generator = new Random();
         return(maxFood - generator.nextInt(maxFood-minFood));
     }
 
     public static int randomAppetiteOfCat(int minAppetite, int maxAppetite) {
-        //Random generator = new Random();
         return (maxAppetite - generator.nextInt(maxAppetite-minAppetite));
     }
 
     public static int randomCountOfCats(int minCount, int maxCount) {
-        //Random generator = new Random();
         return (maxCount - generator.nextInt(maxCount-minCount));
     }
 }
