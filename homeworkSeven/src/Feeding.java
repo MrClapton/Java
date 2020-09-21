@@ -4,6 +4,8 @@ import java.util.Random;
 public class Feeding {
     private static int COUNT_OF_CATS;
 
+    private static Random generator = new Random();
+  
     public static void main(String[] args) {
         COUNT_OF_CATS = randomCountOfCats(5,10);
 
@@ -41,17 +43,25 @@ public class Feeding {
     }
 
     public static int randomFoodInBowl(int minFood, int maxFood) {
-        Random generator = new Random();
+           boolean isCurrentEat = currentCat.eat(plate);
+           if (!isCurrentEat) {
+               continue;
+           } else {
+               System.out.println("Cat " + currentCat.getName() + " ate succesfully");
+           }
+        }
+
+    }
+
+    public static int randomFoodInBowl(int minFood, int maxFood) {
         return(maxFood - generator.nextInt(maxFood-minFood));
     }
 
     public static int randomAppetiteOfCat(int minAppetite, int maxAppetite) {
-        Random generator = new Random();
         return (maxAppetite - generator.nextInt(maxAppetite-minAppetite));
     }
 
     public static int randomCountOfCats(int minCount, int maxCount) {
-        Random generator = new Random();
         return (maxCount - generator.nextInt(maxCount-minCount));
     }
 }

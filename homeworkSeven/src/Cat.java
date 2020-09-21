@@ -24,6 +24,7 @@ public class Cat {
         return satiety;
     }
 
+
     public void eat(Plate plate) {
         plate.decreaseFood(appetite);
     }
