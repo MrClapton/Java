@@ -5,7 +5,7 @@ public class Feeding {
     private static int COUNT_OF_CATS;
 
     private static Random generator = new Random();
-
+  
     public static void main(String[] args) {
         COUNT_OF_CATS = randomCountOfCats(5,10);
 
@@ -32,6 +32,17 @@ public class Feeding {
     public static void feedingCats(Cat[] cats, Plate plate) {
         for (Cat currentCat : cats) {
             if (plate.getFood() < currentCat.getAppetite()) {
+                System.out.println("There is little food in the bowl - " + plate.getFood() + " | for the cat " + currentCat.getName());
+                continue;
+            } else {
+                currentCat.eat(plate);
+                currentCat.setSatiety(true);
+                System.out.println("Cat " + currentCat.getName() + " ate succesfully");
+            }
+        }
+    }
+
+    public static int randomFoodInBowl(int minFood, int maxFood) {
            boolean isCurrentEat = currentCat.eat(plate);
            if (!isCurrentEat) {
                continue;
