@@ -13,13 +13,14 @@ public class ArraysExceptions {
     public static void main(String[] args) {
         randomValue = generator.nextInt(5);
         myArray = new String[randomValue][randomValue];
-        takeArray(myArray);
+        if (arraySize(myArray)) {
+            takeArray(myArray);
+        }
     }
 
 
     private static void takeArray(String[][] array) throws MyArraySizeException, MyArrayDataException {
-        if (array.length == 4) {
-            System.out.println("Array Size accepted! (Size=4)");
+
             for (int i = 0; i < array.length; i++) {
                 for (int j = 0; j < array.length; j++) {
                     array[i][j] = String.valueOf(i) + String.valueOf(j);
@@ -27,21 +28,36 @@ public class ArraysExceptions {
             }
             array[2][3] += "abc";
 
-            try {
-                for (int i = 0; i < array.length; i++) {
-                    for (int j = 0; j < array.length; j++) {
+            for (int i = 0; i < array.length; i++) {
+                for (int j = 0; j < array.length; j++) {
+                    indexI = i;
+                    indexJ = j;//Возникла проблема в том, что если не добавлять в j-тый индекс 1, то exception выдает предыдущий элемент перед ошибочным
+                    try {
                         summ += Integer.parseInt(array[i][j]);
-                        System.out.println("Current summ = " + summ);
-                        indexI = i;
-                        indexJ = j + 1;//Возникла проблема в том, что если не добавлять в j-тый индекс 1, то exception выдает предыдущий элемент перед ошибочным
+                    } catch (NumberFormatException e) {
+                        throw new MyArrayDataException("Error at data! Indexes of error data: ", indexI, indexJ);
                     }
+                    System.out.println("Current summ = " + summ);
                 }
-            } catch (NumberFormatException e) {
-                throw new MyArrayDataException("Error at data! Indexes of error data: ", indexI, indexJ);
             }
             System.out.println("Array summ = " + summ);
-        } else {
+    }
+
+    private static boolean arraySize(String[][] array) throws MyArraySizeException {
+        boolean result = false;
+        if (array.length != 4) {
+            result = false;
             throw new MyArraySizeException("Array Size not accepted (Size= " + randomValue + ")");
         }
+
+        for (String[] row : array) {
+            if (row.length != 4) {
+                result = false;
+                throw new MyArraySizeException("Array Size not accepted (Size= " + randomValue + ")");
+            }
+        }
+        result = true;
+        return result;
     }
+
 }
