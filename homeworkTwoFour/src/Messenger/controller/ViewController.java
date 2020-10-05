@@ -39,14 +39,18 @@ public class ViewController {
         friendTable.setItems(mainApp.getFriendData());
 
         sendButton.setOnAction(event -> {
-            chatHistory.setText(textField.getText());
+            chatHistory.appendText(textField.getText());
+            chatHistory.appendText(System.lineSeparator());
+            textField.clear();
         });
 
         textField.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 if (event.getCode() == KeyCode.ENTER) {//.getCode().getName().equals("\\u2386")) {
-                    chatHistory.setText(textField.getText());
+                    chatHistory.appendText(textField.getText());
+                    chatHistory.appendText(System.lineSeparator());
+                    textField.clear();
                 }
             }
         });
